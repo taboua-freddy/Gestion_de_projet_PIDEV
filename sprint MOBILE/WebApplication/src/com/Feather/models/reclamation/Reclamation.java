@@ -1,0 +1,127 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.Feather.models.reclamation;
+
+import com.Feather.models.user.User;
+import java.util.Date;
+
+/**
+ *
+ * @author Legion
+ */
+public class Reclamation {
+    private int idRec ;
+    private User user ;
+    private String description ;
+    private int etat ;
+    private Date dateRec ;
+    private String reponse ;
+    private String typeRec;
+    
+
+    public Reclamation() {
+    }
+
+    public Reclamation(int idRec, User user, String description, int etat, Date dateRec, String reponse,String typeRec	 ) {
+        this.idRec = idRec;
+        this.user = user;
+        this.description = description;
+        this.etat = etat;
+        this.dateRec = dateRec;
+        this.reponse = reponse;
+        this.typeRec=typeRec;
+        
+    }
+
+    public Reclamation(User user, String description, int etat, Date dateRec, String reponse, String typeRec) {
+        this.user = user;
+        this.description = description;
+        this.etat = etat;
+        this.dateRec = dateRec;
+        this.reponse = reponse;
+        this.typeRec = typeRec;
+    }
+
+    public Reclamation(String description, String typeRec) {
+        this.description = description;
+        this.typeRec = typeRec;
+    }
+
+    public Reclamation(User user, String description, int etat, String reponse, String typeRec) {
+        this.user = user;
+        this.description = description;
+        this.etat = etat;
+        this.reponse = reponse;
+        this.typeRec = typeRec;
+    }
+    
+
+    public int getIdRec() {
+        return idRec;
+    }
+
+    public void setIdRec(int idRec) {
+        this.idRec = idRec;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getEtat() {
+        return etat;
+    }
+
+    public void setEtat(int etat) {
+        this.etat = etat;
+    }
+
+    public Date getDateRec() {
+        return dateRec;
+    }
+
+    public void setDateRec(Date dateRec) {
+        this.dateRec = dateRec;
+    }
+
+    public String getReponse() {
+        return reponse;
+    }
+
+    public void setReponse(String reponse) {
+        this.reponse = reponse;
+    }
+
+    public String gettypeRec() {
+        return typeRec;
+    }
+
+    public void settypeRec(String typeRec) {
+        this.typeRec = typeRec;
+    }
+
+    @Override
+    public String toString() {
+        return "Reclamation{" + "idRec=" + idRec + ", user=" + user + ", description=" + description + ", etat=" + etat + ", dateRec=" + dateRec + ", reponse=" + reponse + ", typeRec=" + typeRec + '}';
+    }
+    
+    
+    
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} Modifier un sprint{% endblock %}
+{% block body %}
+    <script src="{{ asset('assets/vendor/jquery/jquery.js') }}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('#sprintbundle_sprint_projet').parent().css('display', 'none');
+        });
+    </script>
+    {{ form_start(edit_form) }}
+    <div class="row">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-4 text-right">
+            <a class=" btn btn-lg btn-primary" href="{{ path('sprints_index') }}">Retour</a>
+            <input type="submit" class="btn btn-lg btn-success" value="Confirme"/>
+        </div>
+    </div>
+
+    {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    {{ form_widget(edit_form) }}
+    {{ form_end(edit_form) }}
+{% endblock %}

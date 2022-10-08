@@ -1,0 +1,15 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends 'base.html.twig' %}
+{% block pageName %}Profile / Modifier votre profil {% endblock %}
+{% block title %}Changer de mot de passe{% endblock %}
+{% block body %}
+    <div class="well primary mb-xlg">
+        <h1>Modifier votre profil</h1>
+    </div>
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_widget(form) }}
+        <div>
+            <input class=" mb-xs mt-xl mt-xs mr-xs btn btn-lg btn-primary" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

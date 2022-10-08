@@ -1,0 +1,182 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} All User Stories of the project : {{ project.nom }}{% endblock %}
+{% block body %}
+    <div class="row">
+        <button type="button" class="btn btn-primary"
+                data-toggle="modal" data-target="#exampleModal">
+            Ajouter un sprint
+        </button>
+
+        <a class="btn btn-success" href="{{ path('user_story_new', {'id': project.idprojet}) }}">Ajouter une user
+            story</a>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajouter un sprint</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ form_start(sprintForm) }}
+                    {% form_theme sprintForm 'bootstrap_3_layout.html.twig' %}
+                    {{ form_widget(sprintForm) }}
+                    {{ form_end(sprintForm) }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                            id="addTache">Ajouter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="panel">
+        <header class="panel-heading">
+            <h2 class="panel-title">All</h2>
+        </header>
+        <div class="panel-body">
+            <table class="table table-bordered table-striped mb-none dataTable no-footer"
+                   id="usTables"
+                   role="grid" aria-describedby="datatable-default_info">
+                <thead>
+                <tr role="row">
+                    <th></th>
+                    <th width="300px">Nom</th>
+                    <th width="50px">Busines Value</th>
+                    <th width="50px">Capacité</th>
+                    <th width="50px">Priorité</th>
+                    <th width="50px">Complexité</th>
+                    <th>Description</th>
+                    <th>ROI</th>
+                    <th>sprint</th>
+                    <th>Nbr. de taches</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for us in  userStories %}
+                    <tr>
+                        <td>
+                            {% if us.sprint == null %}<input class="cbx" type="checkbox" value="{{ us.idstory }}">{% endif %}
+                        </td>
+                        <td>{{ us.nomstory }}</td>
+                        <td>{{ us.bv }}</td>
+                        <td>{{ us.c }}</td>
+                        <td>{{ us.priorite }}</td>
+                        <td>{{ us.complexite }}</td>
+                        <td>{{ us.description }}</td>
+                        <td>{{ us.roi }}</td>
+                        <td>{{ us.sprint }}</td>
+                        <td>{{ us.taches | length }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-danger"
+                               href="{{ path('user_story_delete', { 'id': us.idstory }) }}">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                            <a class="btn btn-sm btn-warning"
+                               href="{{ path('user_story_edit', { 'id': us.idstory }) }}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-sm btn-success"
+                               href="{{ path('user_story_show', { 'id': us.idstory }) }}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var tableP = $('#usTables').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            function convert(str) {
+                var date = new Date(str),
+                    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+                    day = ("0" + date.getDate()).slice(-2);
+                return [date.getFullYear(), mnth, day].join("-");
+            }
+
+            $("#addTache").click(function () {
+
+
+                var yourArray = new Array();
+                $(".cbx:checked").each(function () {
+                    yourArray.push($(this).val());
+                });
+
+                if (yourArray.length === 0) {
+                    $('#exampleModal').modal('hide');
+                    alert('vous devez choisir au moin une user story');
+                } else {
+                    var debDay = $("#sprintbundle_sprint_datedebut_day").val();
+                    var debMonth = $("#sprintbundle_sprint_datedebut_month").val();
+                    var debYear = $("#sprintbundle_sprint_datedebut_year").val();
+                    var finDay = $("#sprintbundle_sprint_datefin_day").val();
+                    var finMonth = $("#sprintbundle_sprint_datefin_month").val();
+                    var finYear = $("#sprintbundle_sprint_datefin_year").val();
+
+                    var nom = $("#sprintbundle_sprint_nomsprint").val();
+
+                    if (new Date(debYear, debMonth - 1, debDay) < new Date()) {
+                        $("#sprintbundle_sprint_datedebut_day").css({'border': '2px solid red'});
+                        $("#sprintbundle_sprint_datedebut_month").css({'border': '2px solid red'});
+                        $("#sprintbundle_sprint_datedebut_year").css({'border': '2px solid red'});
+                    }
+                    if (new Date(finYear, finMonth - 1, finDay) < new Date(debYear, debMonth - 1, debDay)) {
+                        $("#sprintbundle_sprint_datedebut_day").css({'border': '2px solid red'});
+                        $("#sprintbundle_sprint_datedebut_month").css({'border': '2px solid red'});
+                        $("#sprintbundle_sprint_datedebut_year").css({'border': '2px solid red'});
+                        $("#sprintbundle_sprint_datefin_day").css({'border': '2px solid red'});
+                        $("#sprintbundle_sprint_datefin_month").css({'border': '2px solid red'});
+                        $("#sprintbundle_sprint_datefin_year").css({'border': '2px solid red'});
+                    }
+
+                    if (nom === '') {
+                        $("#sprintbundle_sprint_nomsprint").css({'border': '2px solid red'})
+                    }
+                    if ((nom !== '')
+                        && ((new Date(finYear, finMonth - 1, finDay) < new Date(debYear, debMonth - 1, debDay)) === false)
+                        && ((new Date(debYear, debMonth - 1, debDay) < new Date()) === false) )  {
+                        $.ajax({
+                            dataType: "json",
+                            url: '{{ path('add_new_sprint', { 'id': project.idprojet }) }}',
+                            data: {
+                                "allUs": yourArray,
+                                "dateDebut": convert(new Date(debYear, debMonth - 1, debDay)),
+                                "dateFin": convert(new Date(finYear, finMonth - 1, finDay)),
+                                "nom": nom,
+                            },
+                            error: function (response) {
+                                console.log(response);
+                                $('#exampleModal').modal('hide');
+                            },
+                            success: function (response) {
+                                console.log(response);
+                            },
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

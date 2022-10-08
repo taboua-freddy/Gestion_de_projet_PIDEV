@@ -1,0 +1,41 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends 'default.html.twig' %}
+
+{% block title %}
+    Reinitialiser votre mot de passe
+{% endblock %}
+
+{% block body %}
+    <section class="body-sign">
+        <div class="center-sign">
+            <a href="#" class="logo pull-left">
+                <img src="{{ asset('assets/images/logo.png') }}" height="54" alt="Feather"/>
+            </a>
+            <div class="panel panel-sign">
+                <div class="panel-title-sign mt-xl text-right">
+                    <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Recover Password</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="alert alert-info">
+                        <p class="m-none text-semibold h6">Enter your e-mail below and we will send you reset
+                            instructions!</p>
+                    </div>
+                    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                        <div class="form-group mb-none">
+                            <div class="input-group">
+                                <input type="text" id="username" name="username" placeholder="{{ 'resetting.request.username'|trans }}" class="form-control input-lg" required="required" />
+
+                                <span class="input-group-btn">
+                                <button class="btn btn-primary btn-lg" type="submit">Reset!</button>
+                            </span>
+                            </div>
+                        </div>
+                        <p class="text-center mt-lg">Vous vous Rappelez? <a href="{{path('fos_user_security_login')}}">Se connecter</a>
+                    </form>
+                </div>
+            </div>
+            <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2018. All rights reserved. Template by <a
+                        href="https://colorlib.com/">Colorlib</a>.</p>
+        </div>
+    </section>
+{% endblock %}

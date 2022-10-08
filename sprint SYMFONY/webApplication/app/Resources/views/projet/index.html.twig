@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Projets list</h1>
+<form method="post">
+    <input type="text"placeholder="Rechercher ...." name="search">
+    <input type="submit">
+</form>
+    <table class="table">
+        <thead>
+            <tr>
+              <th>Nom</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for projet in projets %}
+            <tr>
+                 <td>{{ projet.nom }}</td>
+                <td>{% if projet.datedebut %}{{ projet.datedebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if projet.datefin %}{{ projet.datefin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ projet.description }}</td>
+                <td>{{ projet.status }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('projet_show', { 'idprojet': projet.idprojet }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('projet_edit', { 'idprojet': projet.idprojet }) }}">edit</a>
+                        </li>
+                        <form method="post" action="{{ path('changeStat') }}">
+                        <select name="selc">
+                            <option value="On hold">On hold</option>
+                            <option value="Finished">Finished</option>
+                        </select>
+                            <input type="hidden" value="{{ projet.idprojet }}" name="spece">
+                            <input type="Submit">
+                        </form>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<a href="{{ path('pdf') }}">Export Pdf</a>
+    <ul>
+        <li>
+            <a href="{{ path('projet_new') }}">Create a new projet</a>
+        </li>
+    </ul>
+{% endblock %}

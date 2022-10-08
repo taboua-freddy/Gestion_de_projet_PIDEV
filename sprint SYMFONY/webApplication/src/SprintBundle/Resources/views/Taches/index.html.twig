@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} All taches{% endblock %}
+{% block body %}
+
+    <a class="btn btn-success" href="{{ path('taches_new') }}">Ajouter une tache</a>
+
+    <section class="panel">
+        <div class="panel-body">
+            <table class="table table-bordered table-striped mb-none dataTable no-footer"
+                   id="tacheTable"
+                   role="grid" aria-describedby="datatable-default_info">
+                <thead>
+                <tr role="row">
+                    <th></th>
+                    <th width="300px">nom</th>
+                    <th width="300px">datedebut</th>
+                    <th width="50px">datefin</th>
+                    <th width="50px">priorite</th>
+                    <th width="50px">etat</th>
+                    <th width="50px">description</th>
+                    <th>user</th>
+                    <th>userstory</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for t in  taches %}
+                    <tr>
+                        <td>
+                            <input class="cbx" type="checkbox" value="{{ t.idstory }}">
+                        </td>
+                        <td>{{ t.nom }}</td>
+                        <td>{{ t.datedebut|date("m/d/Y") }}</td>
+                        <td>{{ t.datefin|date("m/d/Y") }}</td>
+                        <td>{{ t.priorite }}</td>
+                        <td>{{ t.etat }}</td>
+                        <td>{{ t.description | raw }}</td>
+                        <td>{{ t.user.username }}</td>
+                        <td>{{ t.userstory }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-danger"
+                               href="{{ path('tache_delete', { 'id': t.idtache }) }}">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                            <a class="btn btn-sm btn-warning" href="{{ path('tache_edit', { 'id': t.idtache }) }}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var tableP = $('#tacheTable').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

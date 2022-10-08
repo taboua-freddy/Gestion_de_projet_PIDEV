@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} User Story par projet{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-4">
+            <div id="sprintPerProjet"></div>
+            <script src="{{ asset('amine/js/loader.js') }}"></script>
+            <script type="text/javascript">
+                {{ gc_draw(sprintPerProjet, 'sprintPerProjet') }}
+            </script>
+        </div>
+        <div class="col-md-4">
+            <div id="usPerProjet"></div>
+            <script src="{{ asset('amine/js/loader.js') }}"></script>
+            <script type="text/javascript">
+                {{ gc_draw(usPerProjet, 'usPerProjet') }}
+            </script>
+        </div>
+        <div class="col-md-4">
+            {#<div id="etatUsPerProjet"></div>#}
+            {#<script src="{{ asset('amine/js/loader.js') }}"></script>#}
+            {#<script type="text/javascript">#}
+                {#{{ gc_draw(etatUsPerProjet, 'etatUsPerProjet') }}#}
+            {#</script>#}
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div id="etatUsPerProjet"></div>
+        <script src="{{ asset('amine/js/loader.js') }}"></script>
+        <script type="text/javascript">
+            {{ gc_draw(etatUsPerProjet, 'etatUsPerProjet') }}
+        </script>
+    </div>
+
+{% endblock %}

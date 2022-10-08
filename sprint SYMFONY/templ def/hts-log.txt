@@ -1,0 +1,17 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 04 Mar 2020 13:37:58 at https://colorlib.com/polygon/octopus/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "fr, en, *" https://colorlib.com/polygon/octopus/index.html -O1 "C:\Users\Freddy\Desktop\big update\templ def" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+13:39:16	Error: 	"Not Found" (404) at link https://colorlib.com/polygon/octopus/assets/vendor/fonts/glyphicons-halflings-regular.eot (from https://colorlib.com/polygon/octopus/assets/vendor/summernote/summernote-bs3.css)
+13:39:16	Error: 	"Not Found" (404) at link https://colorlib.com/polygon/octopus/assets/vendor/fonts/glyphicons-halflings-regular.eot? (from https://colorlib.com/polygon/octopus/assets/vendor/summernote/summernote-bs3.css)
+13:39:16	Error: 	"Not Found" (404) at link https://colorlib.com/polygon/octopus/assets/vendor/fonts/glyphicons-halflings-regular.woff (from https://colorlib.com/polygon/octopus/assets/vendor/summernote/summernote-bs3.css)
+13:39:16	Error: 	"Not Found" (404) at link https://colorlib.com/polygon/octopus/assets/vendor/fonts/glyphicons-halflings-regular.ttf (from https://colorlib.com/polygon/octopus/assets/vendor/summernote/summernote-bs3.css)
+13:39:16	Error: 	"Not Found" (404) at link https://colorlib.com/polygon/octopus/assets/vendor/fonts/glyphicons-halflings-regular.svg (from https://colorlib.com/polygon/octopus/assets/vendor/summernote/summernote-bs3.css)
+13:39:16	Error: 	"Not Found" (404) at link https://colorlib.com/polygon/octopus/assets/ajax/assets/images/projects/project-1.jpg (from https://colorlib.com/polygon/octopus/assets/ajax/ui-elements-modals-ajax.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 1 minutes 18 seconds : 272 links scanned, 265 files written (6681085 bytes overall) [2807547 bytes received at 35994 bytes/sec], 5497118 bytes transferred using HTTP compression in 206 files, ratio 24%, 54.6 requests per connection
+(6 errors, 0 warnings, 0 messages)

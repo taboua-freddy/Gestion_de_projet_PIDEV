@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.controller.projet.ProjetController">
+   <children>
+      <BorderPane prefHeight="900.0" prefWidth="1500.0" style="-fx-border-color: #2262C6; -fx-background-color: #fff;">
+         <center>
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="523.0" prefWidth="704.0">
+                     <top>
+                        <Pane prefHeight="0.0" prefWidth="1498.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER" />
+                     </top>
+                     <center>
+                        <Pane prefHeight="257.0" prefWidth="715.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TabPane prefHeight="773.0" prefWidth="1271.0" tabClosingPolicy="UNAVAILABLE">
+                                <tabs>
+                                  <Tab text="Projets">
+                                    <content>
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <ScrollPane prefHeight="773.0" prefWidth="1267.0">
+                                                   <content>
+                                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="765.0" prefWidth="1268.0">
+                                                         <children>
+                                                            <TreeTableView fx:id="tv" layoutX="64.0" layoutY="90.0" prefHeight="242.0" prefWidth="1147.0">
+                                                              <columns>
+                                                                <TreeTableColumn fx:id="col0" prefWidth="39.000030517578125" />
+                                                                <TreeTableColumn fx:id="col1" prefWidth="206.0" text="Project Name" />
+                                                                  <TreeTableColumn fx:id="col2" prefWidth="208.0" text="Group Name" />
+                                                                  <TreeTableColumn fx:id="col3" prefWidth="118.0" text="Start Date" />
+                                                                  <TreeTableColumn fx:id="col4" prefWidth="136.0" text="End Date" />
+                                                                  <TreeTableColumn fx:id="col5" prefWidth="274.0" text="Description" />
+                                                                  <TreeTableColumn fx:id="col6" prefWidth="164.0" text="Status" />
+                                                              </columns>
+                                                            </TreeTableView>
+                                                            <Pane layoutX="64.0" layoutY="413.0" prefHeight="242.0" prefWidth="1147.0">
+                                                               <children>
+                                                                  <Text fontSmoothingType="LCD" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Project" wrappingWidth="228.67092895507812">
+                                                                     <font>
+                                                                        <Font name="Bell MT" size="30.0" />
+                                                                     </font>
+                                                                  </Text>
+                                                                  <Text layoutX="14.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project Name" />
+                                                                  <Text layoutX="14.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group" />
+                                                                  <Text layoutX="338.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+                                                                  <TextArea fx:id="desc" layoutX="436.0" layoutY="66.0" prefHeight="100.0" prefWidth="274.0" />
+                                                                  <Text layoutX="756.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date" />
+                                                                  <Text layoutX="756.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date" />
+                                                                  <DatePicker fx:id="std" layoutX="837.0" layoutY="71.0" />
+                                                                  <DatePicker fx:id="end" layoutX="837.0" layoutY="126.0" />
+                                                                  <Button fx:id="addbtn" layoutX="956.0" layoutY="191.0" mnemonicParsing="false" onAction="#insert" text="+" />
+                                                                  <Button fx:id="resbtn" layoutX="997.0" layoutY="191.0" mnemonicParsing="false" onAction="#Reset" text="Reset" />
+                                                                  <TextField fx:id="pname" layoutX="119.0" layoutY="71.0" />
+                                                                  <ComboBox fx:id="group" layoutX="119.0" layoutY="126.0" prefHeight="31.0" prefWidth="189.0" />
+                                                               </children>
+                                                            </Pane>
+                                                            <Button fx:id="rem" layoutX="1061.0" layoutY="40.0" mnemonicParsing="false" onAction="#delete" text="Remove" />
+                                                            <Button fx:id="up" layoutX="1146.0" layoutY="40.0" mnemonicParsing="false" onAction="#PopUpUpdate" text="Update" />
+                                                            <TextField fx:id="src" layoutX="64.0" layoutY="40.0" onKeyTyped="#DataTableUpdateSearch" prefHeight="31.0" prefWidth="273.0" promptText="Search" />
+                                                            <Button fx:id="fin" layoutX="941.0" layoutY="40.0" mnemonicParsing="false" onAction="#FinishProject" text="Finish Project" />
+                                                         </children>
+                                                      </AnchorPane>
+                                                   </content>
+                                                </ScrollPane>
+                                             </children>
+                                          </AnchorPane>
+                                    </content>
+                                  </Tab>
+                                </tabs>
+                              </TabPane>
+                           </children></Pane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </StackPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

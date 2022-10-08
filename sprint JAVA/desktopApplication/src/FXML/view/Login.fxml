@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.controller.LoginController">
+    <stylesheets>
+        <URL value="@/FXML/css/fullpackstyling.css" />
+    </stylesheets>
+   <children>
+      <Pane prefHeight="900.0" prefWidth="1500.0">
+         <children>
+            <ImageView fitHeight="900.0" fitWidth="1500.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../icons/sam-schooler-E9aetBe2w40-unsplash.jpg" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER_LEFT" layoutX="166.0" layoutY="201.0" prefHeight="555.0" prefWidth="1143.0">
+               <children>
+                  <ImageView fitHeight="562.0" fitWidth="572.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../icons/mimi-thian-7b_9cHdKgFg-unsplash.jpg" />
+                     </image>
+                  </ImageView>
+                  <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="555.0" prefWidth="646.0" style="-fx-background-color: white;">
+                     <children>
+                        <Pane prefHeight="124.0" prefWidth="571.0" />
+                        <GridPane alignment="CENTER" prefHeight="60.0" prefWidth="500.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="195.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="395.0" minWidth="10.0" prefWidth="302.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label stylesheets="@../css/fullpackstyling.css" text="Email" />
+                              <Label prefHeight="35.0" prefWidth="186.0" stylesheets="@../css/fullpackstyling.css" text="Mot de passe" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="inputEmail" promptText="Email" stylesheets="@../css/fullpackstyling.css" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </JFXTextField>
+                              <JFXPasswordField fx:id="inputPassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <Pane layoutX="10.0" layoutY="10.0" prefHeight="124.0" prefWidth="571.0" />
+                        <JFXButton onAction="#seConnecter" prefHeight="43.0" prefWidth="161.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="Se connecter">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <DropShadow color="#647bc6" />
+                           </effect>
+                        </JFXButton>
+                        <Pane prefHeight="36.0" prefWidth="544.0" />
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="553.0">
+                           <children>
+                              <Hyperlink onAction="#signuplink" text="Still didn't get your account">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Hyperlink>
+                              <Pane prefHeight="100.0" prefWidth="119.0" />
+                              <Hyperlink layoutX="10.0" layoutY="10.0" onAction="#resetpasswrdlnk" text="Forgot your password">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Hyperlink>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <ImageView fitHeight="98.0" fitWidth="232.0" layoutX="34.0" layoutY="6.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../icons/logo%20finalll-01.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="1253.0" layoutY="29.0" mnemonicParsing="false" onAction="#buttonExitOnClick" prefHeight="51.0" prefWidth="136.0" styleClass="button3" stylesheets="@../css/fullpackstyling.css" text="EXIT">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" size="30" text="" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Reflection />
+               </effect>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block pageName %}Reclamations/Gerer les  reclamations {% endblock %}
+{% block title %}Gestion des Réclamations{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+{% block body %}
+
+    <a href="{{ path('satatRec')}}"><input type="submit" value="Stats" class=" mb-xs mt-xl mt-xs mr-xs btn btn-lg btn-primary"></a>
+
+    <form method="post">
+        <h4 style="color:DodgerBlue;"> Recherche reclamation par date </h4>
+        <br />
+
+
+        <div class="col-md-12">
+
+            <div class=" input-group col-md-5">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+
+                <input type="date"  name="date"  class="form-control"   >
+            </div>
+
+            <input type="submit" value="recherche" class=" mb-xs mt-xl mt-xs mr-xs btn btn-lg btn-primary" >
+
+
+            <br />
+            <br />
+            <br />
+
+
+        </div>
+
+
+
+
+
+    </form>
+
+    <h4 style="color:DodgerBlue;"> La liste des Reclamations: </h4>
+    <br />
+
+
+    <table class="table">
+        <th>type</th>
+        <th>description</th>
+        <th>date</th>
+        <th>reponse</th>
+        <th>Supprimer</th>
+        <th>répondre</th>
+        <th>Rate</th>
+
+        {% for r in recs %}
+            <tr>
+                <td>{{ r.typeRec }}</td>
+                <td>{{ r.description }}</td>
+                <td>{{ r.dateRec }}</td>
+                <td>{{ r.reponse }}</td>
+
+                <td><a href="{{ path('supprimerRec',{'idrec':r.idRec}) }}">supprimer</a></td>
+                <td><a href="{{ path('repondRec',{'idrec':r.idRec}) }}">repondre</a></td>
+                <td><a href="{{ path('likeRec',{'idrec':r.idRec} )}}"><input type="image" src="{{ asset('likeOn.png') }}" alt="Submit" width="38" height="38"></a>
+                   {{ r.like }}
+
+                    <br>
+                    <a href="{{ path('dislikeRec',{'idrec':r.idRec} )}}"><input type="image" src="{{ asset('dison.png') }}" alt="Submit" width="33" height="33"></a>
+                    {{ r.dislike }}
+                </td>
+            </tr>
+        {% endfor %}
+
+{% endblock %}

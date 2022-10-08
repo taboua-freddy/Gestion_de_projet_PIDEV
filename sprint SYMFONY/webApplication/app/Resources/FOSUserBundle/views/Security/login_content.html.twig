@@ -1,0 +1,78 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% extends 'default.html.twig' %}
+
+{% block title %}
+    Se connecter
+{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <div class="alert alert-info">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+    <section class="body-sign">
+        <div class="center-sign">
+            <a href="https://colorlib.com/" class="logo pull-left">
+                <img src="{{ asset('assets/images/logo.png') }}" height="54" alt="Porto Admin"/>
+            </a>
+            <div class="panel panel-sign">
+                <div class="panel-title-sign mt-xl text-right">
+                    <h2 class="title text-uppercase text-bold m-none"><i class="fa fa-user mr-xs"></i> Sign In</h2>
+                </div>
+                <div class="panel-body">
+                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                        {% endif %}
+                        <div class="form-group mb-lg">
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                            <div class="input-group input-group-icon">
+                                <input type="text" id="username" name="_username" value="{{ last_username }}"
+                                       required="required" autocomplete="username" class="form-control input-lg"/>
+                                <span class="input-group-addon">
+                                    <span class="icon icon-lg">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group mb-lg">
+                            <div class="clearfix">
+                                <label for="password">{{ 'security.login.password'|trans }}</label>
+                                <a href="{{ path('fos_user_resetting_request') }}" class="pull-right">Lost Password?</a>
+                            </div>
+                            <div class="input-group input-group-icon">
+                                <input type="password" id="password" name="_password" required="required"
+                                       autocomplete="current-password" class="form-control input-lg"/>
+                                <span class="input-group-addon">
+                                    <span class="icon icon-lg">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="checkbox-custom checkbox-default">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 text-right">
+                                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-primary hidden-xs"/>
+                            </div>
+                        </div>
+                        <span class="mt-lg mb-lg line-thru text-center text-uppercase">
+                            <span>ou</span>
+                        </span>
+                        <div class="mb-xs text-center">
+                        </div>
+                        <p class="text-center">pas de compte? <a href="{{ path('fos_user_registration_register') }}">Créer un compte!</a>
+                    </form>
+                </div>
+            </div>
+            <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2018. All rights reserved. Template by <a
+                        href="https://colorlib.com/">Colorlib</a>.</p>
+        </div>
+    </section>
+{% endblock %}

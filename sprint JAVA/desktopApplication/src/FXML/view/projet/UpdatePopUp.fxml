@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="498.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.controller.projet.UpdatePopUpController">
+   <children>
+      <Text layoutX="90.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Update Project">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="18.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Project name" />
+      <Text layoutX="18.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Group" />
+      <Text layoutX="18.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+      <Text layoutX="22.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date" />
+      <Text layoutX="25.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date" />
+      <Button fx:id="dis" layoutX="336.0" layoutY="450.0" mnemonicParsing="false" onAction="#Dismiss" text="Dismiss" />
+      <Button fx:id="up" layoutX="195.0" layoutY="450.0" mnemonicParsing="false" onAction="#Update" text="Update" />
+      <Button fx:id="res" layoutX="272.0" layoutY="450.0" mnemonicParsing="false" onAction="#ResetAll" text="Reset" />
+      <TextField fx:id="upname" layoutX="128.0" layoutY="99.0" prefHeight="31.0" prefWidth="267.0" />
+      <ComboBox fx:id="upgroup" layoutX="128.0" layoutY="144.0" prefHeight="31.0" prefWidth="267.0" />
+      <TextArea fx:id="updesc" layoutX="127.0" layoutY="192.0" prefHeight="103.0" prefWidth="267.0" />
+      <DatePicker fx:id="upstd" layoutX="128.0" layoutY="313.0" prefHeight="31.0" prefWidth="267.0" />
+      <DatePicker fx:id="upend" layoutX="128.0" layoutY="355.0" prefHeight="31.0" prefWidth="267.0" />
+      <Text layoutX="22.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State" />
+      <ComboBox fx:id="upst" layoutX="127.0" layoutY="400.0" prefHeight="31.0" prefWidth="267.0" />
+   </children>
+</AnchorPane>

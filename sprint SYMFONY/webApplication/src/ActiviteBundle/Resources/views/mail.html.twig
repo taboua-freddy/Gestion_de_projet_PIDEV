@@ -1,0 +1,43 @@
+{% extends 'default.html.twig' %}
+
+{% block body %}
+    <section class="panel">
+        <div class="panel-body">
+            <div class="invoice">
+                <header class="clearfix">
+                    <div class="row">
+                        <div class="col-sm-6 mt-md">
+                            <h2 class="h2 mt-none mb-sm text-dark text-bold">FEATHER</h2>
+                            <h4 class="h4 m-none text-dark text-bold">#{{id}}</h4>
+                        </div>
+                        <div class="col-sm-6 text-right mt-md mb-md">
+                            <address class="ib mr-xlg">
+                                faether@shadow.tn
+                                <br />
+                                24 Tunis, Ariana
+                                <br />
+                                Phone: +216 55-67-89-01
+                                <br />
+                            </address>
+                            <div class="ib">
+                                <img src="{{ asset('assets/images/logo.png')}}" alt="feather logo" />
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="bill-info">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="bill-to">
+                                {{ message }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right mr-lg">
+                <a href="{{ url('display_meeting') }}" target="_blank" class="btn btn-primary">Voir</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

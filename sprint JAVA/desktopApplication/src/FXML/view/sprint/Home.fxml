@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="593.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.controller.sprint.HomeControllerSprint">
+   <children>
+      <BorderPane prefHeight="593.0" prefWidth="962.0" style="-fx-border-color: #2262C6; -fx-background-color: #fff;">
+         <center>
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane fx:id="border_pane" prefHeight="523.0" prefWidth="704.0">
+                     <top>
+                        <Pane prefHeight="253.0" prefWidth="715.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="21.0" layoutY="14.0" text="LISTE DES USER STORIES" textFill="#626365">
+                                 <font>
+                                    <Font name="Gill Sans MT Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane layoutX="4.0" layoutY="130.0" style="-fx-background-color: #fff; -fx-border-color: #fff;">
+                                 <content>
+                                    <HBox prefHeight="167.0" prefWidth="706.0" spacing="10.0" style="-fx-background-color: #fff; -fx-border-color: #fff;">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </content>
+                              </ScrollPane>
+                              <TableView fx:id="table_us" layoutX="36.0" layoutY="42.0" prefHeight="179.0" prefWidth="716.0">
+                                <columns>
+                                  <TableColumn fx:id="col_userstory" prefWidth="113.0" text="User Story" />
+                                    <TableColumn fx:id="col_bv" prefWidth="93.0" text="Business Value" />
+                                    <TableColumn fx:id="col_cap" prefWidth="55.0" text="Capacite" />
+                                    <TableColumn fx:id="col_desc" prefWidth="78.0" text="Description" />
+                                    <TableColumn fx:id="col_comp" prefWidth="90.0" text="Complexité" />
+                                    <TableColumn fx:id="col_roi" prefWidth="93.0" text="ROI" />
+                                    <TableColumn fx:id="col_priority" prefWidth="100.0" text="Priorité" />
+                                    <TableColumn fx:id="col_update" prefWidth="75.0" text="Update" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </Pane>
+                     </top>
+                     <center>
+                        <Pane prefHeight="257.0" prefWidth="715.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="31.0" layoutY="26.0" text="ALL FILES" textFill="#626365">
+                                 <font>
+                                    <Font name="Gill Sans MT Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane layoutX="8.0" layoutY="56.0" prefHeight="203.0" prefWidth="715.0" style="-fx-border-color: #fff; -fx-background-color: #fff;">
+                                 <content>
+                                    <VBox prefHeight="350.0" prefWidth="711.0" spacing="10.0" style="-fx-background-color: #fff;">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="689.0" spacing="10.0" style="-fx-background-color: #fff;">
+                                             <children>
+                                                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Label prefHeight="17.0" prefWidth="91.0" text="User Story" textFill="#5d5d5e" />
+                                                <Pane prefHeight="36.0" prefWidth="15.0" />
+                                                <Label prefHeight="17.0" prefWidth="107.0" text="Business Value" textFill="#5d5d5e" />
+                                                <Label prefHeight="17.0" prefWidth="73.0" text="Capacite" textFill="#5d5d5e" />
+                                                <Label prefHeight="17.0" prefWidth="89.0" text="Description" textFill="#5d5d5e" />
+                                                <Label prefHeight="17.0" prefWidth="62.0" text="Complexite" textFill="#5d5d5e" />
+                                                <Pane prefHeight="36.0" prefWidth="64.0">
+                                                   <children>
+                                                      <Label layoutX="9.0" layoutY="8.0" prefHeight="17.0" prefWidth="62.0" text="ROI" textFill="#5d5d5e" />
+                                                      <Label layoutX="57.0" layoutY="9.0" prefHeight="17.0" prefWidth="49.0" text="Priorite" textFill="#5d5d5e" />
+                                                      <Pane layoutX="43.0" layoutY="8.0" prefHeight="36.0" prefWidth="63.0" />
+                                                   </children></Pane>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="689.0" spacing="10.0" style="-fx-background-color: #fff;">
+                                             <children>
+                                                <Pane prefHeight="36.0" prefWidth="15.0" />
+                                                <TextField fx:id="userstory" prefHeight="25.0" prefWidth="120.0" />
+                                                <TextField fx:id="bv" prefHeight="25.0" prefWidth="49.0" />
+                                                <TextField fx:id="cap" prefHeight="25.0" prefWidth="64.0" />
+                                                <TextField fx:id="desc" prefHeight="25.0" prefWidth="64.0" />
+                                                <TextField fx:id="comp" prefHeight="25.0" prefWidth="59.0" />
+                                                <TextField fx:id="roi" prefHeight="25.0" prefWidth="53.0" />
+                                                <Pane prefHeight="36.0" prefWidth="63.0">
+                                                   <children>
+                                                      <TextField fx:id="priority" layoutX="5.0" layoutY="4.0" prefHeight="25.0" prefWidth="53.0" />
+                                                   </children></Pane>
+                                                <Button fx:id="submit" mnemonicParsing="false" onAction="#AddUserStory" text="Add" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </Pane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </StackPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

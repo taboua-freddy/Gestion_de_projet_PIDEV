@@ -1,0 +1,132 @@
+
+    <aside id="sidebar-left" class="sidebar-left">
+        <div class="sidebar-header">
+            <div class="sidebar-title">
+                Navigation
+            </div>
+            <div class="sidebar-toggle hidden-xs" data-toggle-class="sidebar-left-collapsed" data-target="html"
+                 data-fire-event="sidebar-left-toggle">
+                <i class="fa fa-bars" aria-label="Toggle sidebar"></i>
+            </div>
+        </div>
+        <div class="nano">
+            <div class="nano-content">
+                <nav id="menu" class="nav-main" role="navigation">
+                    <ul class="nav nav-main">
+                        <li>
+                            <a href="{{ path('homepage') }}">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-parent nav-expanded nav-active">
+                            <a>
+                                <i class="fa fa-align-left" aria-hidden="true"></i>
+                                <span>Activités</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                {% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                                <li>
+                                    <a href="{{ path('add_meeting') }}">Programmer une réunion</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('add_event') }}">Programmer un évévenment</a>
+                                </li>
+                                {% endif %}
+                                <li>
+                                    <a href="{{ path('display_meeting') }}">Votre Calendrier</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        {% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                        <li class="nav-parent nav-expanded">
+                            <a>
+                                <i class="fa fa-align-left" aria-hidden="true"></i>
+                                <span>Projets</span>
+                            </a>
+                            <ul class="nav nav-children">
+                                <li>
+                                    <a href="{{ path('groupetravail_new') }}">Ajouter un groupe de travail</a>
+                                    <a href="{{ path('projet_new') }}">Ajouter un Projet</a>
+                                    <a href="{{ path('chart') }}">Consulter les Statistiques du projets</a>
+                                    <a href="{{ path('groupetravail_index') }}">Consulter les groupes de travail</a>
+                                    <a href="{{ path('projet_index') }}">Consulter les Projects</a>
+                                </li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                        <li class="nav-parent nav-expanded">
+                            <a>
+                                <i class="fa fa-align-left" aria-hidden="true"></i>
+                                <span>Reclamations</span>
+                            </a>
+                            <ul class="nav nav-children">{% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                                <li>
+                                    <a href="{{ path('addRec') }}">Ajouter</a>
+                                </li>{% endif %}
+                                <li>
+                                    <a href="{{ path('afficherRec') }}">Afficher</a>
+                                </li>
+                            </ul>
+                        </li><li class="nav-parent nav-expanded">
+                            <a>
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>Sprints</span>
+                            </a>
+                            <ul class="nav-children nav">
+                                <li>
+                                    <a href="{{ path('sprints_index') }}">All</a>
+                                </li>{% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                                <li>
+                                    <a href="{{ path('sprint_new') }}">Ajouter</a>
+                                </li>{% endif %}
+                            </ul>
+                        </li>{% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                        <li class="nav-parent nav-expanded">
+                            <a>
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>User stories</span>
+                            </a>
+                            <ul class="nav-children nav">
+                                <li>
+                                    <a href="{{ path('user_stories_index', {'id': 1 } ) }}">All</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('user_story_new', {'id': 1 }) }}">Ajouter</a>
+                                </li>
+                            </ul>
+                        </li>{% endif %}
+                        <li class="nav-parent nav-expanded">
+                            <a>
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>Taches</span>
+                            </a>
+                            <ul class="nav-children nav">
+                                <li>
+                                    <a href="{{ path('taches_index') }}">All</a>
+                                </li>{% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                                <li>
+                                    <a href="{{ path('taches_new') }}">Ajouter</a>
+                                </li>{% endif %}
+                            </ul>
+                        </li>{% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                        <li class="nav-parent nav-expanded">
+                            <a>
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                                <span>Statistiques</span>
+                            </a>
+                            <ul class="nav-children nav">
+                                <li>
+                                    <a href="{{ path('projet_statitistique') }}">Projet</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('sprint_statitistique') }}">Sprint</a>
+                                </li>
+                            </ul>
+                        </li>{% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </aside>

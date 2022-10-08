@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block pageName %}Reclamations/Stat sur le type de reclamations {% endblock %}
+{% block title %}Gestion des Réclamations{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+{% block body %}
+    <html>
+    <head></head>
+    <body>
+    <div id="div_chart"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_draw(pieChart, 'div_chart') }}
+    </script>
+    </body>
+    </html>
+{% endblock %}

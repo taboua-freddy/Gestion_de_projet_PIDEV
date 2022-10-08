@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} Création de nouvelle user story{% endblock %}
+{% block body %}
+    <style>
+        fieldset {
+            margin-bottom: 0px !important;
+        }
+    </style>
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-3 text-right">
+            <a class="btn-lg btn-secondary" href="{{ path('user_stories_index', {'id': id}) }}">Back to the list</a>
+            <input type="submit" class="btn-lg btn-success" value="Create"/>
+        </div>
+    </div>
+
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_row(form.nomstory) }}
+            {{ form_errors(form.nomstory) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.description) }}
+            {{ form_errors(form.description) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.sprint) }}
+            {{ form_errors(form.sprint) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(form.status) }}
+            {{ form_errors(form.status) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            {{ form_row(form.bv) }}
+            {{ form_errors(form.bv) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(form.c) }}
+            {{ form_errors(form.c) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.complexite) }}
+            {{ form_errors(form.complexite) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(form.priorite) }}
+            {{ form_errors(form.priorite) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(form.roi) }}
+            {{ form_errors(form.roi) }}
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

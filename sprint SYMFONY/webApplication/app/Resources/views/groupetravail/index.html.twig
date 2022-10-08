@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <style>
+        .customdesign{
+            margin-left: 100px;
+            height: 400px !important;
+            width: 800px !important;
+        }
+        .custom{
+            color:white !important;
+            background-color:black !important;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<h1 style="text-align: center">La listes des groupes de travail</h1>
+<br>
+<br>
+
+    <div class="container customdesign">
+
+        <form method="post">
+            <input type="text"placeholder="Rechercher ...." name="search" style="border-radius: 10px;padding:5px;color: black;">
+            <input type="submit" class="btn btn-primary">
+        </form>
+        <br>
+        <br>
+    <table class="table">
+        <thead class="custom">
+            <tr>
+
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupeTravail in groupeTravails %}
+            <tr>
+                 <td>{{ groupeTravail.nom }}</td>
+                <td>
+
+                            <a class="btn btn-primary" href="{{ path('groupetravail_show', { 'idgroupe': groupeTravail.idgroupe }) }}">show</a>
+
+
+                            <a class="btn btn-primary" href="{{ path('groupetravail_edit', { 'idgroupe': groupeTravail.idgroupe }) }}">edit</a>
+                            <a  class="btn btn-danger" href="{{ path('groupetravail_remove', { 'idgroupe': groupeTravail.idgroupe }) }}">Remove</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <div>
+
+        {% endblock %}

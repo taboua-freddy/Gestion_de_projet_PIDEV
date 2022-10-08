@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} User Story details{% endblock %}
+{% block body %}
+    <style>
+        h4 {
+            font-weight: bold !important;
+        }
+    </style>
+    <div class="row" >
+    <h3><b>Nom : </b> {{ us.nomstory | upper }} ( Projet : {{ us.projet }})</h3>
+    <h3><b>Description : </b> {{ us.description}}</h3>
+        <br>
+        <div class="col-md-4" >
+            <table>
+                <tr>
+                    <td><h4>Sprint  : </h4></td>
+                    <td> {{ us.sprint }}</td>
+                </tr>
+                <tr>
+                    <td><h4>Priorité  : </h4></td>
+                    <td> {{ us.priorite }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4" >
+            <table>
+                <tr>
+                    <td><h4>Complexité  : </h4></td>
+                    <td> {{ us.complexite  }}</td>
+                </tr>
+                <tr>
+                    <td><h4>Capacité  : </h4></td>
+                    <td> {{ us.c }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-4" >
+            <table>
+                <tr>
+                    <td><h4>ROI  : </h4></td>
+                    <td> {{ us.roi }}</td>
+                </tr>
+                <tr>
+                    <td><h4>Business value  : </h4></td>
+                    <td> {{ us.bv  }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row"><br><br>
+        <table class="table table-bordered table-striped mb-none dataTable no-footer"
+               id="usTables"
+               role="grid" aria-describedby="datatable-default_info">
+            <thead>
+            <tr role="row">
+                <th></th>
+                <th width="300px">nom</th>
+                <th width="300px">datedebut</th>
+                <th width="50px">datefin</th>
+                <th width="50px">priorite</th>
+                <th width="50px">etat</th>
+                <th width="50px">description</th>
+                <th>user</th>
+                <th>userstory</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for t in  taches %}
+                <tr>
+                    <td>
+                        <input class="cbx" type="checkbox" value="{{ t.idstory }}">
+                    </td>
+                    <td>{{ t.nom }}</td>
+                    <td>{{ t.datedebut|date("m/d/Y") }}</td>
+                    <td>{{ t.datefin|date("m/d/Y") }}</td>
+                    <td>{{ t.priorite }}</td>
+                    <td>{{ t.etat }}</td>
+                    <td>{{ t.description | raw }}</td>
+                    <td>{{ t.user.username }}</td>
+                    <td>{{ t.userstory }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-danger"
+                           href="{{ path('tache_delete', { 'id': t.idtache }) }}">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                        <a class="btn btn-sm btn-warning" href="{{ path('tache_edit', { 'id': t.idtache }) }}">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{{ asset('assets/vendor/jquery/jquery.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/javascripts/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascripts/dataTables.bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('amine/js/admin.js') }}" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script>
+        $(document).ready(function () {
+            var tableP = $('#usTables').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}

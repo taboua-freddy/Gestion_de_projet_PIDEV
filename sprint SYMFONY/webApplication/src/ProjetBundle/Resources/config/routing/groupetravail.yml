@@ -1,0 +1,27 @@
+groupetravail_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:GroupeTravail:index" }
+    methods:  [GET, POST]
+
+groupetravail_show:
+    path:     /{idgroupe}/show
+    defaults: { _controller: "ProjetBundle:GroupeTravail:show" }
+    methods:  GET
+
+groupetravail_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:GroupeTravail:new" }
+    methods:  [GET, POST]
+groupetravail_remove:
+    path:     /{idgroupe}/remove
+    defaults: { _controller: "ProjetBundle:GroupeTravail:remove" }
+    methods:  [GET, POST]
+groupetravail_edit:
+    path:     /{idgroupe}/edit
+    defaults: { _controller: "ProjetBundle:GroupeTravail:edit" }
+    methods:  [GET, POST]
+
+groupetravail_delete:
+    path:     /{idgroupe}/delete
+    defaults: { _controller: "ProjetBundle:GroupeTravail:delete" }
+    methods:  DELETE

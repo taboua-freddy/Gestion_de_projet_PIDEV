@@ -1,0 +1,12 @@
+projet_groupetravail:
+    resource: "@ProjetBundle/Resources/config/routing/groupetravail.yml"
+    prefix:   /groupetravail
+projet_projet:
+    resource: "@ProjetBundle/Resources/config/routing/projet.yml"
+    prefix:   /projet
+projet_homepage:
+    path:     /
+    defaults: { _controller: ProjetBundle:Default:index }
+aymen:
+    path:     /aymenuser
+    defaults: { _controller: ProjetBundle:Projet:aymen }

@@ -1,0 +1,39 @@
+projet_index:
+    path:     /
+    defaults: { _controller: "ProjetBundle:Projet:index" }
+    methods:  [GET, POST]
+projet_indexPdf:
+    path:     /Pdfff
+    defaults: { _controller: "ProjetBundle:Projet:indexPdf" }
+    methods:  [GET, POST]
+affct:
+    path:     /affct/{idprojet}
+    defaults: { _controller: ProjetBundle:GroupeTravail:affect }
+projet_show:
+    path:     /{idprojet}/show
+    defaults: { _controller: "ProjetBundle:Projet:show" }
+    methods:  GET
+chart:
+    path:     /stat
+    defaults: { _controller: ProjetBundle:Projet:chartPie }
+changeStat:
+    path:     /changeStat
+    defaults: { _controller: ProjetBundle:Projet:changeStat }
+pdf:
+    path:     /pdf
+    defaults: { _controller: ProjetBundle:Projet:PDF }
+projet_new:
+    path:     /new
+    defaults: { _controller: "ProjetBundle:Projet:new" }
+    methods:  [GET, POST]
+
+projet_edit:
+    path:     /{idprojet}/edit
+    defaults: { _controller: "ProjetBundle:Projet:edit" }
+    methods:  [GET, POST]
+
+projet_delete:
+    path:     /{idprojet}/delete
+    defaults: { _controller: "ProjetBundle:Projet:dele" }
+
+

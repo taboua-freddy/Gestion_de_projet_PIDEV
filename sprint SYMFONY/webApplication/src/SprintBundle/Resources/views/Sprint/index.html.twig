@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} All Sprint{% endblock %}
+{% block body %}
+    <section class="panel">
+        <div class="panel-body">
+            <table class="table table-bordered table-striped mb-none dataTable no-footer"
+                   id="tacheTable"
+                   role="grid" aria-describedby="datatable-default_info">
+                <thead>
+                <tr role="row">
+                    <th width="100px">nomsprint</th>
+                    <th width="100px">datedebut</th>
+                    <th width="100px">datefin</th>
+                    <th width="50px">projet</th>
+                    <th width="50px">nbr US</th>
+                    <th width="100px">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for s in  sprints %}
+                    <tr>
+                        <td width="50px">{{ s.nomsprint }}</td>
+                        <td width="100px">{{ s.datedebut|date("m/d/Y") }}</td>
+                        <td width="100px">{{ s.datefin|date("m/d/Y") }}</td>
+                        <td>{{ s.projet }}</td>
+                        <td>{{ s.userstories | length }}</td>
+                        <td width="100px">
+                            <a class="btn btn-sm btn-danger"
+                               href="{{ path('sprint_delete', { 'id': s.idsprint }) }}">
+                                <i class="fa fa-trash-o"></i>
+                            </a>
+                            <a class="btn btn-sm btn-warning" href="{{ path('sprint_edit', { 'id': s.idsprint }) }}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="btn btn-sm btn-secondary" href="{{ path('sprint_show', { 'id': s.idsprint }) }}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            var tableP = $('#tacheTable').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}

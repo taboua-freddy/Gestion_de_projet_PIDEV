@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} Modifier un sprint{% endblock %}
+{% block body %}
+    <div class="row" >
+    <h3><b>{{ sprint.nomsprint | upper }}</b></h3>
+    <table>
+        <tr>
+            <td><h4>Date de début  : </h4></td>
+            <td> {{ sprint.datedebut|date("m/d/Y")  }}</td>
+        </tr>
+        <tr>
+            <td><h4>Date de début  : </h4></td>
+            <td> {{ sprint.datefin|date("m/d/Y") }}</td>
+        </tr>
+        <tr>
+            <td><h4>Projet  : </h4></td>
+            <td> {{ sprint.projet }}</td>
+        </tr>
+    </table>
+    </div>
+    <div class="row"><br><br>
+        <table class="table table-bordered table-striped mb-none dataTable no-footer"
+               id="usTables"
+               role="grid" aria-describedby="datatable-default_info">
+            <thead>
+            <tr role="row">
+                <th></th>
+                <th width="300px">Nom</th>
+                <th width="50px">Busines Value</th>
+                <th width="50px">Capacité</th>
+                <th width="50px">Priorité</th>
+                <th width="50px">Complexité</th>
+                <th>Description</th>
+                <th>ROI</th>
+                <th>sprint</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for us in  userstories %}
+                <tr>
+                    <td>
+                        {{ us.idstory }}
+                    </td>
+                    <td>{{ us.nomstory }}</td>
+                    <td>{{ us.bv }}</td>
+                    <td>{{ us.c }}</td>
+                    <td>{{ us.priorite }}</td>
+                    <td>{{ us.complexite }}</td>
+                    <td>{{ us.description }}</td>
+                    <td>{{ us.roi }}</td>
+                    <td>{{ us.sprint }}</td>
+                    <td>
+                        <a class="btn btn-sm btn-danger"
+                           href="{{ path('user_story_delete', { 'id': us.idstory }) }}">
+                            <i class="fa fa-trash-o"></i>
+                        </a>
+                        <a class="btn btn-sm btn-warning"
+                           href="{{ path('user_story_edit', { 'id': us.idstory }) }}">
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        <a class="btn btn-sm btn-success"
+                           href="{{ path('sprint_show_annuler_us', { 'id': us.idstory }) }}">
+                            <i class="fa fa-times"></i> Annuler
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{{ asset('assets/vendor/jquery/jquery.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/javascripts/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascripts/dataTables.bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('amine/js/admin.js') }}" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script>
+        $(document).ready(function () {
+            var tableP = $('#usTables').DataTable({
+                "paging": true,
+                "stateSave": true,
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/French.json",
+                }
+            });
+        });
+    </script>
+{% endblock %}

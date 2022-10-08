@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1312.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.controller.tache.TacheController">
+    <children>
+      <BorderPane prefHeight="750.0" prefWidth="1500.0" style="-fx-border-color: #2262C6; -fx-background-color: #fff;">
+         <center>
+            <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <BorderPane prefHeight="523.0" prefWidth="704.0">
+                     <top>
+                        <Pane prefHeight="658.0" prefWidth="1268.0" style="-fx-background-color: #fff;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label layoutX="22.0" layoutY="39.0" text="Vos Taches!" textFill="#2262c6">
+                                 <font>
+                                    <Font name="Gill Sans MT" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="9.0" layoutY="105.0" prefHeight="142.0" prefWidth="718.0" textFill="#626365">
+                                 <font>
+                                    <Font name="Gill Sans MT Bold" size="12.0" />
+                                 </font>
+                                 <graphic>
+                                    <HBox prefHeight="142.0" prefWidth="1026.0" spacing="10.0" style="-fx-background-color: #fff; -fx-border-color: #fff;">
+                                       <children>
+                                          <TableView fx:id="TableView" prefHeight="130.0" prefWidth="723.0">
+                                            <columns>
+                                              <TableColumn fx:id="colNum" prefWidth="75.0" text="Numéro" />
+                                              <TableColumn fx:id="colFonctionallite" prefWidth="95.20001983642578" text="Fonctionnalité" />
+                                                <TableColumn fx:id="colPriorite" prefWidth="95.20001983642578" text="Priorite" />
+                                                <TableColumn fx:id="colNom" prefWidth="95.20001983642578" text="Nom" />
+                                                <TableColumn fx:id="colDateDebut" prefWidth="95.20001983642578" text="Datedebut" />
+                                                <TableColumn fx:id="colDateFin" prefWidth="95.20001983642578" text="DateFin" />
+                                                <TableColumn fx:id="colDescription" prefWidth="95.20001983642578" text="Description" />
+                                                <TableColumn fx:id="colEtat" prefWidth="44.00006103515625" text="Etat" />
+                                            </columns>
+                                             <stylesheets>
+                                                <URL value="@../css/fullpackstyling.css" />
+                                                <URL value="@../../css/fullpackstyling.css" />
+                                             </stylesheets>
+                                          </TableView>
+                                       </children>
+                                    </HBox>
+                                 </graphic>
+                              </Label>
+                              <TableView fx:id="TableView1" layoutX="10.0" layoutY="303.0" prefHeight="115.0" prefWidth="723.0" stylesheets="@../css/fullpackstyling.css">
+                                 <columns>
+                                    <TableColumn fx:id="colNum1" prefWidth="75.0" text="Numéro" />
+                                    <TableColumn fx:id="colFonctionallite1" prefWidth="95.20001983642578" text="Fonctionnalité" />
+                                    <TableColumn fx:id="colPriorite1" prefWidth="95.20001983642578" text="Priorite" />
+                                    <TableColumn fx:id="colNom1" prefWidth="95.20001983642578" text="Nom" />
+                                    <TableColumn fx:id="colDateDebut1" prefWidth="95.20001983642578" text="Datedebut" />
+                                    <TableColumn fx:id="colDateFin1" prefWidth="95.20001983642578" text="DateFin" />
+                                    <TableColumn fx:id="colDescription1" prefWidth="95.20001983642578" text="Description" />
+                                    <TableColumn fx:id="colEtat1" prefWidth="44.00006103515625" text="Etat" />
+                                 </columns>
+                              </TableView>
+                              <TableView fx:id="TableView11" layoutX="10.0" layoutY="487.0" prefHeight="115.0" prefWidth="723.0" stylesheets="@../css/fullpackstyling.css">
+                                 <columns>
+                                    <TableColumn fx:id="colNum11" prefWidth="75.0" text="Numéro" />
+                                    <TableColumn fx:id="colFonctionallite11" prefWidth="95.20001983642578" text="Fonctionnalité" />
+                                    <TableColumn fx:id="colPriorite11" prefWidth="95.20001983642578" text="Priorite" />
+                                    <TableColumn fx:id="colNom11" prefWidth="95.20001983642578" text="Nom" />
+                                    <TableColumn fx:id="colDateDebut11" prefWidth="95.20001983642578" text="Datedebut" />
+                                    <TableColumn fx:id="colDateFin11" prefWidth="95.20001983642578" text="DateFin" />
+                                    <TableColumn fx:id="colDescription11" prefWidth="95.20001983642578" text="Description" />
+                                    <TableColumn fx:id="colEtat11" prefWidth="44.00006103515625" text="Etat" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="commencer" layoutX="37.0" layoutY="261.0" mnemonicParsing="false" onAction="#Commencerdoing" text="Commencer" />
+                              <Button fx:id="done" layoutX="33.0" layoutY="450.0" mnemonicParsing="false" onAction="#Commencerdone" prefHeight="25.0" prefWidth="88.0" text="Done" />
+                              <PieChart fx:id="mypiechart" layoutX="754.0" layoutY="103.0" />
+                              <Button layoutX="949.0" layoutY="520.0" mnemonicParsing="false" onAction="#PieChartSample" text="Votre avancement" />
+                           </children>
+                        </Pane>
+                     </top>
+                  </BorderPane>
+               </children>
+            </StackPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+ {% block stylesheets %}
+ <style>
+      .customdesign{
+          margin-left: 300px;
+         height: 400px !important;
+         width: 500px !important;
+     }
+ </style>
+ {% endblock %}
+{% block body %}
+
+    <div class="contrainer customdesign">
+    <h1>Ajouter un groupe de travail</h1>
+        <br>
+
+    {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+        <br>
+
+        <input type="submit" value="Ajouter un groupe de travail" />
+    {{ form_end(form) }}
+
+    </div>
+{% endblock %}

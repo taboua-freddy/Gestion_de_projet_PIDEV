@@ -1,0 +1,3 @@
+toDo :
+       - terminer la configuration du FOSUSER
+       - ajout de l attribut statut et implementation de la fonction notification

@@ -1,0 +1,25 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% extends 'base.html.twig' %}
+{% block pageName %}Profile / Votre profile {% endblock %}
+{% block title %}Votre profile{% endblock %}
+{% block body %}
+    <div class="well primary mb-xlg">
+        <h1>Consulter votre profil</h1>
+    </div>
+    <div class="fos_user_user_show">
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="">{{ 'profile.show.username'|trans }}</label>
+            <div class="col-md-6">
+                <input class="form-control" id="" readonly="readonly" type="text" value="{{ user.username }}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="">{{ 'profile.show.email'|trans }}</label>
+            <div class="col-md-6">
+                <input class="form-control" id="" readonly="readonly" type="text" value="{{ user.email }}">
+            </div>
+        </div>
+    </div>
+    <a class=" mb-xs mt-xl mt-xs mr-xs btn btn-lg btn-primary" href="{{ path('fos_user_profile_edit') }}">Modifier mon profil</a>
+    <a class=" mb-xs mt-xl mt-xs mr-xs btn btn-lg btn-danger" href="{{ path('fos_user_change_password') }}">Modifier mon mot de passe</a>
+{% endblock %}

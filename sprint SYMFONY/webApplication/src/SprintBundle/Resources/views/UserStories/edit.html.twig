@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} Modification de user story{% endblock %}
+{% block body %}
+    {{ form_start(edit_form) }}
+    <div class="row">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-4 text-right">
+            <a class=" btn btn-lg btn-primary" href="{{ path('user_stories_index', {'id': projet.idprojet}) }}">Back to the list</a>
+            <input type="submit" class="btn btn-lg btn-success" value="Confirme"/>
+        </div>
+    </div>
+
+    {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_row(edit_form.nomstory) }}
+            {{ form_errors(edit_form.nomstory) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(edit_form.description) }}
+            {{ form_errors(edit_form.description) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(edit_form.sprint) }}
+            {{ form_errors(edit_form.sprint) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(edit_form.status) }}
+            {{ form_errors(edit_form.status) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            {{ form_row(edit_form.bv) }}
+            {{ form_errors(edit_form.bv) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(edit_form.c) }}
+            {{ form_errors(edit_form.c) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(edit_form.complexite) }}
+            {{ form_errors(edit_form.complexite) }}
+        </div>
+        <div class="col-md-3">
+            {{ form_row(edit_form.priorite) }}
+            {{ form_errors(edit_form.priorite) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_row(edit_form.roi) }}
+            {{ form_errors(edit_form.roi) }}
+        </div>
+    </div>
+    {{ form_end(edit_form) }}
+{% endblock %}

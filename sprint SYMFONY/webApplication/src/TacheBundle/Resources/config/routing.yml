@@ -1,0 +1,3 @@
+tache_homepage:
+    path:     /
+    defaults: { _controller: TacheBundle:Default:index }

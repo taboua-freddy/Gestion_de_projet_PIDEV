@@ -1,0 +1,33 @@
+
+<li>
+    <a href="#" id="notification-button" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+        <i class="fa fa-bell"></i>
+        <span class="badge" id="numberNew">{{ numberNew }}</span>
+    </a>
+    <div class="dropdown-menu notification-menu">
+        <div class="notification-title">
+            <span class="pull-right label label-default"></span>
+            Notifications
+        </div>
+        <div class="content" style="height: 400px; overflow-x: auto" >
+            <ul id="notifications">
+                {% for notif in notifs|reverse %}
+                    <li>
+                        <a href="{% if notif.parameters is not null %}{{ path( notif.route, notif.parameters) }} {% else %} {{ path( notif.route) }}{% endif %} " class="clearfix notif-item" data-id="{{ notif.id }}">
+                            <div class="image">
+                                <i class="fa fa-bell {{ notif.icon }}"></i>
+                            </div>
+                            <span class="title">{{ notif.title }}</span>
+                            <span class="message">{{ notif.description }}</span>
+                            <span class="message">{{ notif.date|date("d/m/Y H:m:s") }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class=" content text-right">
+            <hr/>
+            <a href="#" id="delete-notifs" class="view-more">Effacer</a>
+        </div>
+    </div>
+</li>

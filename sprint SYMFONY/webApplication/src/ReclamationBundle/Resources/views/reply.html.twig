@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+{% block pageName %}Activités/programmer un événement {% endblock %}
+{% block title %}Gestion des activités{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+{% block body %}
+    {{ form(form) }}
+{% endblock %}

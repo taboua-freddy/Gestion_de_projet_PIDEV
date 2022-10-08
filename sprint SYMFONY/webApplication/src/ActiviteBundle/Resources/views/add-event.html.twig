@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+{% block pageName %}Activités/programmer un événement {% endblock %}
+{% block title %}Gestion des activités{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="well primary mb-xlg">
+        <h1>Programmer un Evénement</h1>
+    </div>
+    <div class="col-md-9">
+        {{ form_start(form,{'attr':{'novalidate':'novalidate','id':'EventForm'}}) }}
+        <div class="form-group">
+            <label class="col-md-3 control-label " for="{{ form.titre.vars.id }}">Titre </label>
+            <div class="col-md-9">
+                    {{ form_widget(form.titre) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="{{ form.datedebut.vars.id }}">Date Debut-Fin</label>
+            <div class="col-md-9">
+                <div class="input-daterange" data-plugin-datepicker data-date-format="dd/mm/yyyy" style="display:flex; justify-content: space-between">
+                    <div class=" input-group col-md-5">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input type="text" class="form-control" value="" name="{{ form.datedebut.vars.form.children.date.vars.full_name }}" >
+                    </div>
+                    <div class="col-md-2 input-group"></div>
+                    <div class="input-group col-md-5">
+                        <span class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                        <input type="text" class="form-control" value="" name="{{ form.datefin.vars.form.children.date.vars.full_name }}" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="{{ form.datedebut.vars.id }}">Heure Debut-Fin</label>
+            <div class="col-md-4">
+                <div class="input-group" >
+                    <span class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </span>
+                    <input type="text" value="" name="{{ form.datedebut.vars.form.children.time.vars.full_name }}"  data-plugin-timepicker class="form-control" data-plugin-options='{ "showMeridian": false }'>
+
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <div class="input-group" >
+                    <span class="input-group-addon">
+                        <i class="fa fa-clock-o"></i>
+                    </span>
+                    <input type="text" value="" name="{{ form.datefin.vars.form.children.time.vars.full_name }}"  data-plugin-timepicker class="form-control" data-plugin-options='{ "showMeridian": false }'>
+
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label">Liste des Projets</label>
+            <div class="col-md-9">
+                <span class="autocomplete-select"></span>
+                <button id="clear" class="btn btn-danger">Tout éffacer</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="{{ form.imageFile.vars.id }}">Affiche</label>
+            <div class="col-md-9">
+                <div class="fileupload fileupload-new"  data-provides="fileupload">
+                    <div class="input-append">
+                        <div class="uneditable-input">
+                            <i class="fa fa-file fileupload-exists"></i>
+                            <span class="fileupload-preview"></span>
+                        </div>
+                        <span class="btn btn-default btn-file">
+                            <span class="fileupload-exists">Changer</span>
+                            <span class="fileupload-new">Selectionner une affiche</span>
+                            <input type="file"  name="{{ form.imageFile.vars.form.children.file.vars.full_name }}" accept=".jpg,.jpeg,.png"/>
+                        </span>
+                        <a class="btn btn-default fileupload-exists" data-dismiss="fileupload" href="#">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label " for="{{ form.titre.vars.id }}">Lieu </label>
+            <div class="col-md-9">
+                {{ form_widget(form.lieu) }}
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox-custom checkbox-danger ml-md">
+                <input checked="" id="checkboxRappel" type="checkbox" name="meRappeler">
+                <label for="checkboxExample2">Me rappeler</label>
+            </div>
+            <div class="form-group blockRappel">
+                <label class="col-md-3 control-label"></label>
+                <div class="col-md-3">
+                    <div data-plugin-spinner data-plugin-options='{ "value":15, "step": 5, "min": 0, "max": 200 }'>
+                        <div class="input-group">
+                            <div class="spinner-buttons input-group-btn">
+                                <button type="button" class="btn btn-default spinner-up">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <input type="text" class="spinner-input form-control" name="dureeRappel" maxlength="3" readonly>
+                            <div class="spinner-buttons input-group-btn">
+                                <button type="button" class="btn btn-default spinner-down">
+                                    <i class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select class="form-control" name="uniteTemps">
+                        {% for val,unite in uniteTemps %}
+                            <option value="{{ val }}">{{ unite }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="{{ form.description.vars.id }}">Description </label>
+            <div class="col-md-9">
+                {{ form_widget(form.description,{'attr':{'rows':'7'}}) }}
+            </div>
+        </div>
+        <button type="submit" id="programmerEvent" class=" mb-xs mt-xl mt-xs mr-xs btn btn-lg btn-primary">Programmer</button>
+        <div class="loader hidden" id="loader-2">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+
+    {% do form.datedebut.setRendered %}
+    {% do form.datefin.setRendered %}
+    {% do form.imageFile.setRendered %}
+
+    {% do form.affiche.setRendered %}
+    {% do form.daterappel.setRendered %}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('select-pure/bundle.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('select-pure/scriptEvent.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/jquery-autosize/jquery.autosize.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js') }}" type="text/javascript"></script>
+{% endblock %}

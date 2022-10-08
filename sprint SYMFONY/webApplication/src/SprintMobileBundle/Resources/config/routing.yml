@@ -1,0 +1,38 @@
+fetch_projects_api:
+  path:     /projects
+  defaults: { _controller: SprintMobileBundle:Projet:fetchProjects }
+
+fetch_sprint_api:
+  path:     /sprints/{id}
+  defaults: { _controller: SprintMobileBundle:Sprint:fetchSprints }
+
+add_sprint_api:
+  path:     /addSprint/{name}/{dateDebut}/{dateFin}/{idProjet}
+  defaults: { _controller: SprintMobileBundle:Sprint:AddSprint }
+
+delete_sprint_api:
+  path:     /delete_sprint/{id}
+  defaults: { _controller: SprintMobileBundle:Sprint:deleteSprint }
+
+update_sprint_api:
+  path:     /updateSprint/{id}/{name}/{dateDebut}/{dateFin}
+  defaults: { _controller: SprintMobileBundle:Sprint:UpdateSprint }
+
+fetch_stories_api:
+  path:     /stories/{id}
+  defaults: { _controller: SprintMobileBundle:Sprint:fetchStories }
+
+delete_story_api:
+  path:     /delete_story/{id}
+  defaults: { _controller: SprintMobileBundle:Sprint:deleteStory }
+
+add_story_api:
+  path:     /addStory/{name}/{bv}/{cap}/{complexite}/{roi}/{priorite}/{status}/{description}/{idProjet}/{idSprint}
+  defaults: { _controller: SprintMobileBundle:Sprint:AddStory }
+
+update_story_api:
+  path:     /updateStory/{name}/{bv}/{cap}/{complexite}/{roi}/{priorite}/{status}/{description}/{idStory}
+  defaults: { _controller: SprintMobileBundle:Sprint:UpdateStory }
+count_status_api:
+  path:     /countStatus/{status}
+  defaults: { _controller: SprintMobileBundle:Sprint:countStatus }

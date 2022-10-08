@@ -1,0 +1,42 @@
+mobile_api:
+    resource: "@MobileApiBundle/Controller/"
+    type:     annotation
+    prefix:   /api
+
+sprint_mobile:
+    resource: "@SprintMobileBundle/Resources/config/routing.yml"
+    prefix:   /apiMob
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+tache:
+    resource: "@TacheBundle/Resources/config/routing.yml"
+    prefix:   /
+
+activite:
+    resource: "@ActiviteBundle/Controller/"
+    type:     annotation
+    prefix:   /activities
+
+sprint:
+    resource: "@SprintBundle/Controller"
+    prefix:   /
+    type: annotation
+
+reclamation:
+    resource: "@ReclamationBundle/Controller/"
+    type:     annotation
+    prefix:   /reclamations
+
+projet:
+    resource: "@ProjetBundle/Resources/config/routing.yml"
+    prefix:   /
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/AdminController.php"
+    prefix: /admin
+    type: annotation

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="mainPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1268.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.controller.activites.AfficherReunionController">
+   <children>
+      <AnchorPane fx:id="afficaheModif" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Pane layoutX="19.0" layoutY="20.0" prefHeight="787.0" prefWidth="1234.0" style="-fx-background-color: #dfe4ea; -fx-background-radius: 30;">
+               <children>
+                  <JFXButton fx:id="buttonHideModal" layoutX="1146.0" layoutY="21.0" onAction="#hideModal" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="close" textFill="#fffdfd" />
+                  <StackPane fx:id="stackPane" layoutY="100.0" prefHeight="702.0" prefWidth="1246.0">
+                     <children>
+                        <AnchorPane prefHeight="817.0" prefWidth="1207.0">
+                           <children>
+                              <AnchorPane fx:id="affichageInfo1" layoutX="583.0" prefHeight="621.0" prefWidth="629.0" style="-fx-background-color: #dfe4ea; -fx-background-radius: 20;" visible="false">
+                                 <children>
+                                    <JFXTextField fx:id="filtre" labelFloat="true" layoutX="99.0" layoutY="28.0" prefHeight="25.0" prefWidth="277.0" promptText="Nom,prenom etc" unFocusColor="#b5b0b0" />
+                                    <Label layoutX="11.0" layoutY="30.0" prefHeight="21.0" prefWidth="96.0" styleClass="label3" stylesheets="@../../css/fullpackstyling.css" text="Filtrer :" />
+                                    <TreeTableView fx:id="t1" editable="true" layoutX="12.0" layoutY="83.0" prefHeight="479.0" prefWidth="607.0" style="-fx-background-radius: 20;" styleClass="table-view" stylesheets="@../../css/fullpackstyling.css">
+                                       <columns>
+                                          <TreeTableColumn id="c1" fx:id="c1" prefWidth="52.0" text="*" />
+                                          <TreeTableColumn id="c2" fx:id="c2" prefWidth="169.0" text="Nom" />
+                                          <TreeTableColumn id="c3" fx:id="c3" minWidth="4.0" prefWidth="193.0" text="Prenom" />
+                                          <TreeTableColumn id="c4" fx:id="c4" minWidth="0.0" prefWidth="192.0" text="Email" />
+                                       </columns>
+                                    </TreeTableView>
+                                    <JFXButton layoutX="531.0" layoutY="9.0" onAction="#closeModal" prefHeight="17.0" prefWidth="88.0" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Close">
+                                       <graphic>
+                                          <MaterialDesignIconView fill="WHITE" glyphName="WINDOW_CLOSE">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </MaterialDesignIconView>
+                                       </graphic>
+                                    </JFXButton>
+                                    <JFXButton fx:id="buttonAjouterMulti" layoutX="262.0" layoutY="575.0" prefHeight="25.0" prefWidth="106.0" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Ajouter" />
+                                 </children>
+                              </AnchorPane>
+                              <Pane layoutY="509.0" prefHeight="152.0" prefWidth="555.0" style="-fx-background-color: #dfe4ea;">
+                                 <children>
+                                    <HBox layoutX="16.0" layoutY="52.0" prefHeight="72.0" prefWidth="530.0">
+                                       <children>
+                                          <JFXDatePicker fx:id="dateDebut" defaultColor="#2262c6" editable="false" prefHeight="25.0" prefWidth="149.0" />
+                                          <JFXTimePicker fx:id="heureDebut" defaultColor="#70a1ff" prefHeight="25.0" prefWidth="74.0" />
+                                          <Pane prefHeight="72.0" prefWidth="22.0" />
+                                          <Label text="------" />
+                                          <Pane layoutX="174.0" layoutY="10.0" prefHeight="72.0" prefWidth="23.0" />
+                                          <JFXDatePicker fx:id="dateFin" defaultColor="#2262c6" editable="false" />
+                                          <JFXTimePicker fx:id="heureFin" defaultColor="#70a1ff" layoutX="158.0" layoutY="10.0" prefHeight="25.0" prefWidth="64.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="16.0" layoutY="14.0" prefHeight="25.0" prefWidth="530.0">
+                                       <children>
+                                          <Label style="-fx-font-size: 18;" stylesheets="@../../css/fullpackstyling.css" text="date et heure de debut" />
+                                          <Pane prefHeight="25.0" prefWidth="125.0" />
+                                          <Label layoutX="10.0" layoutY="10.0" style="-fx-font-size: 18;" stylesheets="@../../css/fullpackstyling.css" text="date et heure de fin" />
+                                       </children>
+                                    </HBox>
+                                    <HBox layoutX="10.0" layoutY="88.0" prefHeight="51.0" prefWidth="530.0">
+                                       <children>
+                                          <JFXCheckBox fx:id="rappelCheckBox" checkedColor="#2262c6" onAction="#rappelCheckBoxOnClick" text="Me rappeler" textFill="#2262c6">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </JFXCheckBox>
+                                          <Pane prefHeight="41.0" prefWidth="47.0" />
+                                          <Spinner fx:id="tempsRappel" prefHeight="25.0" prefWidth="106.0" />
+                                          <Pane prefHeight="41.0" prefWidth="38.0" />
+                                          <JFXComboBox fx:id="uniteTemps" onAction="#uniteTemps" prefHeight="25.0" prefWidth="137.0" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <padding>
+                                          <Insets top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </Pane>
+                              <GridPane layoutY="8.0" prefHeight="470.0" prefWidth="555.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="298.0" minHeight="10.0" prefHeight="116.0" valignment="TOP" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Titre" />
+                                    <Label layoutX="10.0" layoutY="17.0" styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Description" GridPane.rowIndex="5" />
+                                    <Label layoutX="10.0" layoutY="47.0" styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Imporatance" GridPane.rowIndex="6" />
+                                    <TextArea fx:id="descriptionText" prefHeight="97.0" prefWidth="277.0" promptText="Description" style="-fx-border-radius: 0;" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label layoutX="10.0" layoutY="16.0" styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Théme du jour" GridPane.rowIndex="1" />
+                                    <JFXTextField fx:id="themeDuJour" labelFloat="true" layoutX="288.0" layoutY="15.0" prefHeight="25.0" prefWidth="279.0" promptText="Theme" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Sprint" GridPane.rowIndex="4" />
+                                    <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Projet" GridPane.rowIndex="3" />
+                                    <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Coordonateur" GridPane.rowIndex="2" />
+                                    <JFXComboBox fx:id="sprint" prefHeight="25.0" prefWidth="281.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <JFXComboBox fx:id="importance" prefHeight="25.0" prefWidth="289.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                    <HBox prefHeight="44.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                       <children>
+                                          <JFXComboBox fx:id="projet" prefHeight="25.0" prefWidth="282.0" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="44.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <children>
+                                          <JFXTextField fx:id="coordonateur" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="173.0" promptText="Coordonateur" />
+                                          <Pane prefHeight="44.0" prefWidth="42.0" />
+                                          <JFXButton onAction="#ajouterCoordonateur" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Ajouter" />
+                                       </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="292.0" GridPane.columnIndex="1">
+                                       <children>
+                                          <Pane prefHeight="58.0" prefWidth="325.0">
+                                             <children>
+                                                <JFXComboBox fx:id="titreCombo" layoutX="-8.0" layoutY="17.0" prefHeight="25.0" prefWidth="211.0" />
+                                                <JFXTextField fx:id="titre" labelFloat="true" layoutY="17.0" prefHeight="25.0" prefWidth="204.0" promptText="Titre" unFocusColor="#434242" />
+                                             </children>
+                                          </Pane>
+                                          <JFXCheckBox fx:id="autreTitre" checkedColor="#2262c6" onAction="#autreTitre" text="Autres" textFill="#2262c6">
+                                             <font>
+                                                <Font size="16.0" />
+                                             </font>
+                                          </JFXCheckBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                              </GridPane>
+                              <JFXButton layoutX="829.0" layoutY="630.0" onAction="#programmerReunion" prefHeight="41.0" prefWidth="137.0" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Modifier">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </JFXButton>
+                              <Label layoutX="617.0" layoutY="30.0" prefHeight="21.0" prefWidth="197.0" styleClass="label3" stylesheets="@../../css/fullpackstyling.css" text="Ajouter des participants :" />
+                              <JFXButton layoutX="826.0" layoutY="28.0" onAction="#ajouterParticipants" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="ajouter" />
+                              <TreeTableView fx:id="tableViewPart" editable="true" layoutX="617.0" layoutY="80.0" prefHeight="270.0" prefWidth="594.0" styleClass="table-view" stylesheets="@../../css/fullpackstyling.css" />
+                              <JFXButton layoutX="898.0" layoutY="28.0" onAction="#supprimerParticipants" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Supprimer la selection" />
+                              <JFXTextArea fx:id="objectif" labelFloat="true" layoutX="621.0" layoutY="364.0" prefHeight="42.0" prefWidth="387.0" promptText="Ajouter un objectif" />
+                              <JFXButton layoutX="1014.0" layoutY="365.0" onAction="#ajouterOjectif" prefHeight="41.0" prefWidth="122.0" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Ajouter un objectif" />
+                              <JFXListView fx:id="listObjectifs" layoutX="616.0" layoutY="420.0" prefHeight="197.0" prefWidth="594.0" />
+                              <JFXButton layoutX="1158.0" layoutY="365.0" onAction="#clearObjectifs" prefHeight="41.0" prefWidth="52.0" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Clear" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </StackPane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <Pane prefHeight="72.0" prefWidth="1268.0">
+         <children>
+            <Label layoutX="36.0" layoutY="21.0" prefHeight="30.0" prefWidth="1161.0" text="Home / Activités / liste des Reunions" textFill="#2262c6">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Hyperlink layoutX="507.0" layoutY="32.0" />
+         </children>
+      </Pane>
+      <AnchorPane fx:id="affichageDetailsPart" layoutX="10.0" layoutY="10.0" prefHeight="827.0" prefWidth="1196.0">
+         <children>
+            <Pane layoutX="743.0" layoutY="32.0" prefHeight="795.0" prefWidth="511.0" style="-fx-background-color: #dfe4ea; -fx-background-radius: 30;">
+               <children>
+                  <Label layoutX="111.0" layoutY="22.0" prefHeight="35.0" prefWidth="306.0" stylesheets="@../../css/fullpackstyling.css" text="Liste des participants" />
+                  <TreeTableView fx:id="listPartDetails" layoutX="21.0" layoutY="100.0" prefHeight="675.0" prefWidth="468.0" styleClass="table-view" stylesheets="@../../css/fullpackstyling.css">
+                    <columns>
+                      <TreeTableColumn fx:id="nomUserD" prefWidth="141.0" text="Nom" />
+                      <TreeTableColumn fx:id="prenomUserD" prefWidth="167.0" text="Prenom" />
+                        <TreeTableColumn fx:id="presenceUserD" prefWidth="151.0" text="Presence" />
+                    </columns>
+                  </TreeTableView>
+                  <JFXButton layoutX="444.0" layoutY="9.0" onAction="#hideModalPart" styleClass="button2" stylesheets="@../../css/fullpackstyling.css" text="Close" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="707.0" prefWidth="1268.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutY="72.0" prefHeight="58.0" prefWidth="736.0">
+               <children>
+                  <Pane layoutY="72.0" prefHeight="58.0" prefWidth="738.0">
+                     <children>
+                        <JFXButton layoutX="668.0" layoutY="8.0" onAction="#trierReunions" prefHeight="41.0" prefWidth="54.0" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Trier" textAlignment="CENTER">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </Pane>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <Pane fx:id="labelInstruction" layoutX="745.0" layoutY="71.0" prefHeight="739.0" prefWidth="511.0">
+               <children>
+                  <Label graphicTextGap="8.0" layoutX="64.0" layoutY="172.0" lineSpacing="15.0" prefHeight="461.0" prefWidth="417.0" stylesheets="@../../css/fullpackstyling.css" text="Selectionner une réunion pour afficher ses détails" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </Pane>
+            <TreeTableView fx:id="listReunion" accessibleRole="TABLE_VIEW" editable="true" layoutX="26.0" layoutY="142.0" prefHeight="657.0" prefWidth="710.0" stylesheets="@../../css/fullpackstyling.css">
+               <columns>
+                  <TreeTableColumn fx:id="selectedCol" prefWidth="29.999969482421875" text="*" />
+                  <TreeTableColumn fx:id="titreCol" prefWidth="211.0" text="Titre" />
+                  <TreeTableColumn fx:id="dateDebutCol" prefWidth="150.0" text="Debut" />
+                  <TreeTableColumn fx:id="dateFinCol" prefWidth="157.0" text="Fin" />
+                  <TreeTableColumn fx:id="etatCol" prefWidth="155.0" text="Etat" />
+               </columns>
+               <contextMenu>
+                  <ContextMenu>
+                    <items>
+                      <MenuItem text="Details" />
+                    </items>
+                  </ContextMenu>
+               </contextMenu>
+               <styleClass>
+                  <String fx:value="table-view" />
+                  <String fx:value="table-row-cell" />
+               </styleClass>
+            </TreeTableView>
+            <Pane fx:id="detailsPane" layoutX="745.0" layoutY="71.0" prefHeight="739.0" prefWidth="511.0" style="-fx-background-color: white;">
+               <children>
+                  <GridPane layoutX="51.0" layoutY="78.0" prefHeight="332.0" prefWidth="439.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="268.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="298.0" minHeight="10.0" prefHeight="116.0" valignment="TOP" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="250.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="250.0" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Titre" />
+                        <Label layoutX="10.0" layoutY="17.0" styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Description" GridPane.rowIndex="5" />
+                        <Label layoutX="10.0" layoutY="47.0" styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Imporatance" GridPane.rowIndex="6" />
+                        <JFXTextField fx:id="titreDetails" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="279.0" unFocusColor="#434242" GridPane.columnIndex="1" />
+                        <TextArea fx:id="descriptionTextDetails" editable="false" prefHeight="104.0" prefWidth="249.0" style="-fx-border-radius: 0;" styleClass="text" stylesheets="@../../css/fullpackstyling.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label layoutX="10.0" layoutY="16.0" styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Théme du jour" GridPane.rowIndex="1" />
+                        <JFXTextField fx:id="themeDuJourDetails" editable="false" labelFloat="true" layoutX="288.0" layoutY="15.0" prefHeight="25.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Sprint" GridPane.rowIndex="4" />
+                        <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Projet" GridPane.rowIndex="3" />
+                        <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Coordonateur" GridPane.rowIndex="2" />
+                        <HBox prefHeight="44.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <children>
+                              <JFXTextField fx:id="projetDetails" editable="false" prefHeight="25.0" prefWidth="303.0" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="44.0" prefWidth="279.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <children>
+                              <JFXTextField fx:id="coordonateurDetails" editable="false" labelFloat="true" prefHeight="25.0" prefWidth="329.0" />
+                              <Pane prefHeight="44.0" prefWidth="42.0" />
+                           </children>
+                        </HBox>
+                        <JFXTextField fx:id="sprintDetails" editable="false" prefHeight="25.0" prefWidth="241.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <HBox layoutX="170.0" layoutY="123.0" prefHeight="44.0" prefWidth="283.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <children>
+                              <JFXTextField fx:id="importanceDetails" editable="false" prefHeight="25.0" prefWidth="178.0" />
+                           </children>
+                        </HBox>
+                        <Label styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Date de Rappel" GridPane.rowIndex="7" />
+                        <JFXTextField fx:id="dateRappelDetails" editable="false" prefHeight="25.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </GridPane>
+                  <JFXListView fx:id="listObjectifsDetails" layoutX="51.0" layoutY="496.0" prefHeight="228.0" prefWidth="446.0" styleClass="list-cell" stylesheets="@../../css/fullpackstyling.css" />
+                  <Label layoutX="51.0" layoutY="459.0" prefHeight="24.0" prefWidth="284.0" styleClass="label2" stylesheets="@../../css/fullpackstyling.css" text="Objectifs de la réunion :" />
+                  <JFXButton layoutX="51.0" layoutY="32.0" onAction="#afficherParticipants" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Liste des participants" />
+                  <JFXButton layoutX="204.0" layoutY="32.0" onAction="#supprimerReunion" prefHeight="25.0" prefWidth="145.0" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Supprimer la réunion" />
+                  <JFXButton layoutX="372.0" layoutY="32.0" onAction="#modifierReunion" styleClass="button3" stylesheets="@../../css/fullpackstyling.css" text="Modifier la reunion" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

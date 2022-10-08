@@ -1,0 +1,31 @@
+{% extends 'base.html.twig.' %}
+{% block pageName %}Activités/affichage des réclamations {% endblock %}
+{% block title %}Gestion des Réclamations{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/vendor/bootstrap-fileupload/bootstrap-fileupload.min.css') }}" rel="stylesheet" />
+{% endblock %}
+
+
+
+{% block body %}
+    <table class="table">
+        <th>type</th>
+        <th>description</th>
+        <th>date</th>
+        <th>reponse</th>
+        <th>Supprimer</th>
+        <th>répondre</th>
+        {% for r in recs %}
+            <tr>
+                <td>{{ r.typerec }}</td>
+                <td>{{ r.description }}</td>
+                <td>{{ r.daterec.format('Y-m-d') }}</td>
+                <td>{{ r.reponse }}</td>
+
+                <td><a href="{{ path('supprimerRec',{'idrec':r.idrec}) }}">supprimer</a></td>
+                <td><a href="{{ path('repondRec',{'idrec':r.idrec}) }}">repondre</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

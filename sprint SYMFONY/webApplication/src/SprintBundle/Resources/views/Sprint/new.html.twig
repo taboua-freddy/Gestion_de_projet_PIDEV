@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block pageName %} Ajouter un sprint{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-4 text-right">
+            <a class=" btn btn-lg btn-primary" href="{{ path('sprints_index') }}">Retour</a>
+            <input type="submit" class="btn btn-lg btn-success" value="Confirme"/>
+        </div>
+    </div>
+
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

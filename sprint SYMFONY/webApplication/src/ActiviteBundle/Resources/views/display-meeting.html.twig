@@ -1,0 +1,347 @@
+{% extends 'base.html.twig' %}
+{% block pageName %}Activités/Vos réunions {% endblock %}
+{% block title %}Gestion des activités{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('fullcalendar-4.4.0/packages/core/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('fullcalendar-4.4.0/packages/daygrid/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('fullcalendar-4.4.0/packages/timegrid/main.css') }}" />
+    <link rel="stylesheet" href="{{ asset('fullcalendar-4.4.0/packages/list/main.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+
+    <section class="panel">
+        <div class="panel-body">
+            <div class="row m-xl mt-sm" >
+                <form id="search-activities" method="post" action="{{ path('search_activity') }}">
+                    <div class="form-group mb-xl">
+                        <div class="panel-body col-md-6" >
+                            <div class="input-group">
+                                <div class="input-normal">
+                                    <input class="form-control" type="text" name="titre">
+                                </div>
+                                <div class="input-date-range">
+                                    <div class="form-group">
+                                        <div class="col-md-6">
+                                            <div class="input-daterange input-group" data-plugin-datepicker>
+                                                <span class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input type="text" class="form-control" name="start">
+                                                <span class="input-group-addon"> à </span>
+                                                <input type="text" class="form-control" name="end">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" id="display-filter">Filtrer</button>
+                                </span>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" id="search" type="submit"><i class="fa fa-search"></i></button>
+                                </span>
+                                <span class="input-group-btn close-search" style="display: none">
+                                    <button class="btn btn-danger btn-close-search" ><i class="fa fa-times"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="filter-options" style="display: none">
+                        <div class="col-md-6" style="display: flex; justify-content: space-around">
+                            <div class="form-horizontal form-bordered" >
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Par : </label>
+                                    <div class="col-sm-8">
+                                        <div class="radio-custom radio-primary by-title">
+                                            <input checked id="byTitle" name="critere" value="bytitle" type="radio">
+                                            <label for="byTitle">Titre</label>
+                                        </div>
+                                        <div class="radio-custom radio-primary by-date">
+                                            <input id="byDate" name="critere" value="bydate" type="radio">
+                                            <label for="byDate">Date</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal form-bordered" >
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Par : </label>
+                                    <div class="col-sm-8">
+                                        <div class="checkbox-custom checkbox-primary by-event">
+                                            <input id="byEvent" type="checkbox" value="evenement" name="type[]">
+                                            <label for="byEvent">Evenement</label>
+                                        </div>
+                                        <div class="checkbox-custom checkbox-primary  by-meeting">
+                                            <input id="byMeeting" type="checkbox" value="meeting" name="type[]">
+                                            <label for="byMeeting">Reunion</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-horizontal form-bordered" id="importance-filter">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">Importance : </label>
+                                    <div class="col-sm-8">
+                                        <div class="checkbox-custom checkbox-primary">
+                                            <input id="" type="checkbox" value="5" name="importance[]">
+                                            <label for="">Très important</label>
+                                        </div>
+                                        <div class="checkbox-custom checkbox-primary">
+                                            <input  type="checkbox" value="3" name="importance[]">
+                                            <label for="">Moin important</label>
+                                        </div>
+                                        <div class="checkbox-custom checkbox-primary" >
+                                            <input type="checkbox" value="0" name="importance[]">
+                                            <label for="">Pas important</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="loader hidden" id="loader-2">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div id='calendar'></div>
+                    <div class="timeline" id="divSearch" style="display: none">
+                        <div class="tm-body">
+                            <div class="tm-title">
+                                <h3 class="h5 text-uppercase">November 2013</h3>
+                            </div>
+                            <ol class="tm-items">
+                                <li>
+                                    <div class="tm-info">
+                                        <div class="tm-icon"><i class="fa fa-map-marker"></i></div>
+                                        <time class="tm-datetime" datetime="2013-11-14 17:25">
+                                            <div class="tm-datetime-date">7 months ago.</div>
+                                            <div class="tm-datetime-time">05:25 PM</div>
+                                        </time>
+                                    </div>
+                                    <div class="tm-box " data-appear-animation="fadeInRight" data-appear-animation-delay="400">
+                                        <p>
+                                            <a href="#">John Doe</a> is reading a book at <span class="text-primary">New York Public Library</span>
+                                        </p>
+                                        <blockquote class="primary">
+                                            <p>Learn from yesterday, live for today, hope for tomorrow. The important thing is not to stop questioning.</p>
+                                            <small>A. Einstein,
+                                                <cite title="Brainyquote">Brainyquote</cite>
+                                            </small>
+                                        </blockquote>
+
+                                        <div class="tm-meta">
+                                            <span>
+                                                <i class="fa fa-user"></i> By <a href="#">John Doe</a>
+                                            </span>
+                                            <span>
+                                                <i class="fa fa-comments"></i> <a href="#">9 Comments</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" style="display: none">
+                    <div class="d-flex justify-content-between">
+                        {% if "SCRUM_MASTER" in app.user.roles or "PRODUCT_OWNER" in app.user.roles %}
+                            <a class="modal-with-form btn btn-xl mt-sm toHide  btn-primary" href="#modalForm">Liste des participants</a>
+                            <a class="modal-with-move-anim ml-sm mt-sm btn btn-xl btn-danger"  href="#modalAnim">Supprimer</a>
+                            <a class="btn btn-xl mt-sm  btn-success" id="modifierActivity" href="#">Modifier</a>
+                        {% endif %}
+                        <a class="modal-with-move-anim ml-sm btn btn-xl btn-dark mt-sm"  href="#modalForm2">Google Agenda</a>
+                        <a class="ml-sm btn btn-xl btn-warning mt-sm" id="abscenceBtn"  href="#">Marquer absent</a>
+                    </div>
+                    <div id="details">
+                        <p class="h4 text-light">Détails
+                        </p>
+                        <hr />
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="titre">Titre</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="titre" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="coordonateur">Coordonateur</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="coordonateur" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="sprint">Sprint</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="sprint" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="debut">Debut</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="debut" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="fin">Fin</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="fin" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="important">Importance</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="important" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="theme">Theme</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="theme" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="description">Description</label>
+                            <div class="col-md-9">
+                                <input class="form-control" id="description" readonly="readonly" type="text" >
+                            </div>
+                        </div>
+
+                        <hr />
+                        <p class="mt-5 h4 text-light">Objectifs</p>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table mb-none">
+                                    <tbody>
+                                    <tr>
+                                        <td>1qdfsdfsd</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="modalForm" class="modal-block modal-block-primary mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-danger modal-dismiss">Close</button>
+                    </div>
+                </div>
+                <h2 class="panel-title">Liste des participants</h2>
+            </header>
+            <div class="panel-body">
+                <div class="table-responsive" >
+                    <table class="table table-hover mb-none">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Groupe</th>
+                        </tr>
+                        </thead>
+                        <tbody id="participants">
+                        <tr>
+                            <td>1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <footer class="panel-footer"></footer>
+        </section>
+    </div>
+    <div id="modalForm2" class="modal-block modal-block-primary mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-danger modal-dismiss">Close</button>
+                    </div>
+                </div>
+                {% if app.request.session.get("token_calendar") is null %}
+                    <a class="btn-dark btn m-xlg ml-sm" target="_blank" href="{{ authUrl }}">Générer un token ici...</a>
+                    <h2 class="panel-title">Saisir le Token de validation fournit par Google Calendar</h2>
+                {% endif %}
+            </header>
+            <div class="panel-body">
+                {% if app.request.session.get("token_calendar") is null %}
+                <form id="token" class="form-horizontal mb-lg" novalidate="novalidate">
+                    <div class="form-group mt-lg">
+                        <label class="col-sm-3 control-label">Token {{ app.session.get("token_calendar") }}</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="token" class="form-control" placeholder="Saisir votre token" required />
+                        </div>
+                    </div>
+                </form>
+                {% endif %}
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary modal-confirm-google">Ajouter à Google Calendar</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+    <div id="modalAnim" data-id="0" class="zoom-anim-dialog modal-block modal-block-danger mfp-hide">
+        <section class="panel">
+            <header class="panel-heading">
+                <h2 class="panel-title">Confirmation</h2>
+            </header>
+            <div class="panel-body">
+                <div class="modal-wrapper">
+                    <div class="modal-icon">
+                        <i class="fa fa-question-circle"></i>
+                    </div>
+                    <div class="modal-text">
+                        <p>Etes vous sure de vouloir supprimer cette réunion ???</p>
+                    </div>
+                </div>
+            </div>
+            <footer class="panel-footer">
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button class="btn btn-primary modal-confirm">Confirmer</button>
+                        <button class="btn btn-default modal-dismiss">Annuler</button>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('fullcalendar-4.4.0/packages/core/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('fullcalendar-4.4.0/packages/interaction/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('fullcalendar-4.4.0/packages/daygrid/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('fullcalendar-4.4.0/packages/timegrid/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('fullcalendar-4.4.0/packages/list/main.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('fullcalendar-4.4.0/packages/core/locales/fr.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('fullcalendar-4.4.0/vendor/rrule.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascripts/display-meetings.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendor/jquery-autosize/jquery.autosize.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('assets/javascripts/pages/examples.timeline.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascripts/pages/custom.filter.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/javascripts/pages/custom.calendar.js') }}" type="text/javascript"></script>
+{% endblock %}
